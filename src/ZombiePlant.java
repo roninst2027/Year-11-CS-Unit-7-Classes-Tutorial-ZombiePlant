@@ -20,8 +20,20 @@ public ZombiePlant(int potency, int treatmentsNeeded) {
     }
 
     public void treat(int treatmentPotency) {
-        if (treatmentPotency >= potency) {
-            treatmentsNeeded--;
+        if (treatmentPotency <= 0) {
+            return;
+        }
+
+        if (treatmentsNeeded > 0) {
+            if (treatmentPotency <= potency) {
+                treatmentsNeeded--;
+            } else {
+                treatmentsNeeded++;
+            }
+        } else {
+            if (treatmentPotency > potency) {
+                treatmentsNeeded++;
+            }
         }
     }
 
